@@ -1,6 +1,19 @@
 'use client'
 import Link from "next/link";
-export default function Login(){
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+const Login = () =>{
+    const router = useRouter();
+    console.log(router);
+    useEffect(() => {
+      // Redirect to a different page after 3 seconds (for example)
+      const redirectTimer = setTimeout(() => {
+        router.push('/admin');
+      }, 3000);
+  
+      // Clear the timer on component unmount (optional)
+      return () => clearTimeout(redirectTimer);
+    }, []); // Empty dependency array ensures the effect runs once on mount
 
     return(<>
         {/* component */}
@@ -84,3 +97,4 @@ export default function Login(){
       </>
       )
 }
+export default Login;
