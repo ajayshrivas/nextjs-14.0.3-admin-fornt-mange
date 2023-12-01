@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import Topbar from './components/topbar';
 import Sidebar from './components/sidebar';
+import Loading from "./loading";
 export default function DashboardLayout({
   children, // will be a page or nested layout
 }) {
@@ -12,7 +13,7 @@ export default function DashboardLayout({
         <Sidebar/>
         {/* Include shared UI here e.g. a header or sidebar */}
         <div className="flex-1 p-4">
-          <Suspense fallback={<p>Loading feed...</p>}>
+          <Suspense fallback={<Loading />}>
           {children}
           </Suspense>
          </div>
